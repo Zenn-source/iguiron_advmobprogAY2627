@@ -43,8 +43,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-iguiron_advmobprog/build/
-iguiron_advmobprog/build/
-iguiron_advmobprog/.dart_tool/
-iguiron_advmobprog/.flutter-plugins
-iguiron_advmobprog/.flutter-plugins-dependencies
+/iguiron_advmobprog/build/
+/iguiron_advmobprog/build/
+/iguiron_advmobprog/.dart_tool/
+/iguiron_advmobprog/.flutter-plugins
+/iguiron_advmobprog/.flutter-plugins-dependencies
