@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
 import '../widgets/custom_text.dart';
 
-// Enhancement 3: Settings Page dedicated to toggling Dark/Light Mode
+// Settings Page for dark mode toggling
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 

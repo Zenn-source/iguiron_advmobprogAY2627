@@ -15,7 +15,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   late Future<List<Product>> _productsFuture;
 
-  // Enhancement 1: Local state for search query and filtering
+  // Default state for searching
   List<Product> _allProducts = [];
   List<Product> _filteredProducts = [];
   final TextEditingController _searchController = TextEditingController();
@@ -26,7 +26,7 @@ class _ProductScreenState extends State<ProductScreen> {
     _productsFuture = ProductService().getAllProducts();
   }
 
-  // Enhancement 1: Filtering logic for search functionality
+  // Filter Logic for searching
   void _filterProducts(String query) {
     setState(() {
       if (query.isEmpty) {
@@ -39,7 +39,7 @@ class _ProductScreenState extends State<ProductScreen> {
     });
   }
 
-  // Enhancement 2: Details modal sheet rendered directly inside product_screen.dart
+  // For Detailed Product Screen shown when clicked
   void _showProductDetails(BuildContext context, Product product) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -55,7 +55,7 @@ class _ProductScreenState extends State<ProductScreen> {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         child: Column(
           children: [
-            // Enhancement 1: Added Search Bar UI above the product list
+            // Search Bar UI
             TextField(
               controller: _searchController,
               onChanged: _filterProducts,
@@ -115,7 +115,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     itemBuilder: (context, index) {
                       final product = _filteredProducts[index];
                       return GestureDetector(
-                        // Enhancement 2: Opens product details modal directly when clicked
+                        // Logic for click event on products
                         onTap: () => _showProductDetails(context, product),
                         child: Card(
                           elevation: 2,

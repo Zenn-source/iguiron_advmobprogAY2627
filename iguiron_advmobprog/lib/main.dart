@@ -3,12 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-
-// screens
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
-
-// providers
 import 'providers/theme_provider.dart';
 
 void main() async {
@@ -37,14 +33,14 @@ class RoblesAdvMobProg extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'E-Commerce App',
-            // Enhancement 3: Dynamically switch light/dark theme using ThemeProvider
+            // Dynamically switch light/dark theme using ThemeProvider
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
             themeMode: themeModel.isDark ? ThemeMode.dark : ThemeMode.light,
             initialRoute: '/home',
             routes: {
               '/home': (context) => const HomeScreen(),
-              // Enhancement 3: Route for Settings Screen
+              // Route for Settings Screen
               '/settings': (context) => const SettingsScreen(),
             },
           );
