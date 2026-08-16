@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/product.dart';
 import '../services/product_service.dart';
-import '../screens/product_detail_screen.dart';
+import '../screens/detail_screen.dart';
 import '../widgets/custom_text.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _ProductScreenState extends State<ProductScreen> {
   void _showProductDetails(BuildContext context, Product product) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => ProductDetailScreen(product: product),
+        builder: (_) => DetailScreen(product: product),
       ),
     );
   }

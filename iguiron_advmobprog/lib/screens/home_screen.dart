@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'cart_screen.dart';
 import 'product_screen.dart';
 import '../widgets/custom_text.dart';
+
+// Tab indices for the PageView / BottomNavigationBar below.
+const int _kShopTab = 0;
+const int _kCartTab = 1;
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -12,8 +17,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = _kShopTab;
   final PageController _pageController = PageController();
+
+  // enhancement 2: chat to floating action button
+  void _openChat(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => Scaffold(
+          appBar: AppBar(title: const Text('Chat')),
+          body: const Center(child: Text('Chat Screen')),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +40,7 @@ class HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           elevation: 2,
-          title: (_selectedIndex == 0)
+          title: (_selectedIndex == _kShopTab)
               ? SizedBox(
                   height: 28.h,
                   child: Image.asset(
@@ -39,11 +56,7 @@ class HomeScreenState extends State<HomeScreen> {
                   ),
                 )
               : CustomText(
-                  text: (_selectedIndex == 1)
-                      ? 'Chat'
-                      : (_selectedIndex == 2)
-                          ? 'Profile'
-                          : 'Home',
+                  text: (_selectedIndex == _kCartTab) ? 'Cart' : 'Profile',
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -65,10 +78,17 @@ class HomeScreenState extends State<HomeScreen> {
           },
           children: const <Widget>[
             ProductScreen(),
-            Center(child: Text('Chat Screen')),
+            CartScreen(),
             Center(child: Text('Profile Screen')),
           ],
         ),
+        // enhancement 2: FloatingActionButton for chat, hidden while at the Cart screen
+        floatingActionButton: _selectedIndex == _kCartTab
+            ? null
+            : FloatingActionButton(
+                onPressed: () => _openChat(context),
+                child: const Icon(Icons.chat),
+              ),
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -76,7 +96,10 @@ class HomeScreenState extends State<HomeScreen> {
           onTap: _onTappedBar,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.shop_2), label: 'Shop'),
-            BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
+            ),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
         ),

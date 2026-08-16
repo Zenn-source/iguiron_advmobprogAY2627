@@ -15,4 +15,15 @@ class ProductService {
       throw Exception('Failed to load products');
     }
   }
+
+  // enhancement 1: fetch a single product by id so the shared detail_screen can be reused when navigating from a cart item
+  Future<Product> getProductById(int id) async {
+    final response = await http.get(Uri.parse('$host/products/$id'));
+
+    if (response.statusCode == 200) {
+      return Product.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load product $id');
+    }
+  }
 }
