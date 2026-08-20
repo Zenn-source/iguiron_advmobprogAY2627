@@ -24,7 +24,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
-    _cartFuture = CartService().getCartByUserId(kCurrentUserId);
+    _cartFuture = CartService().getCartByUserId(currentUserId);
   }
 
   void _changeQuantity(int index, int delta) {

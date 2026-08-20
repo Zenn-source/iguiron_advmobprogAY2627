@@ -17,7 +17,7 @@ class DetailScreen extends StatelessWidget {
   Future<void> _addToCart(BuildContext context) async {
     final messenger = ScaffoldMessenger.of(context);
     try {
-      final cart = await CartService().addToCart(kCurrentUserId, [
+      final cart = await CartService().addToCart(currentUserId, [
         {'id': product.id, 'quantity': 1},
       ]);
       messenger.showSnackBar(

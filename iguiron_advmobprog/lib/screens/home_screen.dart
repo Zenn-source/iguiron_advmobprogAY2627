@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'cart_screen.dart';
 import 'product_screen.dart';
+import 'profile_screen.dart';
 import '../widgets/custom_text.dart';
 
 // Tab indices for the PageView / BottomNavigationBar below.
@@ -9,8 +10,7 @@ const int _kShopTab = 0;
 const int _kCartTab = 1;
 
 class HomeScreen extends StatefulWidget {
-  final String username;
-  const HomeScreen({super.key, this.username = ''});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => HomeScreenState();
@@ -79,7 +79,7 @@ class HomeScreenState extends State<HomeScreen> {
           children: const <Widget>[
             ProductScreen(),
             CartScreen(),
-            Center(child: Text('Profile Screen')),
+            ProfileScreen(),
           ],
         ),
         // enhancement 2: FloatingActionButton for chat, hidden while at the Cart screen

@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'screens/home_screen.dart';
 import 'screens/settings_screen.dart';
+import 'screens/splash_screen.dart';
+import 'screens/signin_screen.dart';
 import 'providers/theme_provider.dart';
 
 void main() async {
@@ -37,8 +39,13 @@ class RoblesAdvMobProg extends StatelessWidget {
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
             themeMode: themeModel.isDark ? ThemeMode.dark : ThemeMode.light,
-            initialRoute: '/home',
+            initialRoute: '/splash',
             routes: {
+              // enhancement 1: splash checks persistent auth before landing
+              // on /home or /signin
+              '/splash': (context) => const SplashScreen(),
+              // enhancement 2: sign-in screen backed by UserService
+              '/signin': (context) => const SignInScreen(),
               '/home': (context) => const HomeScreen(),
               // Route for Settings Screen
               '/settings': (context) => const SettingsScreen(),
